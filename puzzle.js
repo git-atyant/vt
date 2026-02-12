@@ -174,12 +174,18 @@ class JigsawPuzzle {
             }
         });
         
-        // Touch support for mobile devices
+        // Touch support for mobile devices with improved handling
         piece.addEventListener('touchstart', (e) => {
+            e.preventDefault(); // Prevent page scrolling
             piece.classList.add('dragging');
         });
         
+        piece.addEventListener('touchmove', (e) => {
+            e.preventDefault(); // Prevent page scrolling during drag
+        });
+        
         piece.addEventListener('touchend', (e) => {
+            e.preventDefault();
             piece.classList.remove('dragging');
             
             const touch = e.changedTouches[0];
